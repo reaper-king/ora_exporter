@@ -1,4 +1,4 @@
-FROM node:18-buster-slim AS builder
+FROM node:18-alpine AS builder
 WORKDIR /app
 COPY package*.json .
 RUN npm ci
@@ -8,7 +8,7 @@ RUN npm prune --production
 #RUN wget https://download.oracle.com/otn_software/linux/instantclient/2112000/instantclient-basic-linux.x64-21.12.0.0.0dbru.zip -O client.zip
 #RUN unzip client.zip
 
-FROM node:18-alpine
+FROM node:18-buster-slim
 
 WORKDIR /tmp
 RUN apt-get update && apt-get -y upgrade && apt-get -y dist-upgrade && apt-get install -y alien libaio1
