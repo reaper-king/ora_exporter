@@ -1,4 +1,4 @@
-FROM node:18-alpine AS builder
+FROM node:18-buster-slim AS builder
 WORKDIR /app
 COPY package*.json .
 RUN npm ci
@@ -11,10 +11,10 @@ RUN npm prune --production
 FROM node:18-alpine
 
 WORKDIR /tmp
-RUN apt update && apt -y upgrade && apt -y dist-upgrade && apt install -y alien libaio1
+RUN apt-get update && apt-get -y upgrade && apt-get -y dist-upgrade && apt-get install -y alien libaio1
 RUN wget https://yum.oracle.com/repo/OracleLinux/OL7/oracle/instantclient/x86_64/getPackage/oracle-instantclient19.3-basiclite-19.3.0.0.0-1.x86_64.rpm
 RUN alien -i --scripts oracle-instantclient*.rpm
-RUN rm -f oracle-instantclient19.3*.rpm && apt -y autoremove && apt -y clean
+RUN rm -f oracle-instantclient19.3*.rpm && apt-get -y autoremove && apt-get -y clean
 
 
 WORKDIR /app
