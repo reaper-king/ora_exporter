@@ -7,7 +7,8 @@ let result
 
 
 try {
-    oracledb.initOracleClient({libDir: '/app/client'});
+    // oracledb.initOracleClient({libDir: '/app/client'});
+    oracledb.initOracleClient();
   } catch (err) {
     console.error('Whoops!');
     console.error(err);
