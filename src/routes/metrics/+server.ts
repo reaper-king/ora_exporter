@@ -3,7 +3,7 @@ import type {  RequestHandler } from "@sveltejs/kit";
 export const GET : RequestHandler = async()=>{
     
     try {
-         let res  = await sendOracleResult(q2)
+         let res  = await sendOracleResult(queri)
         // await db.authenticate();
         return new Response(
             JSON.stringify(res)
