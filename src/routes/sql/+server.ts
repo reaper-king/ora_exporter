@@ -1,15 +1,19 @@
 import sendOracleResult from "$lib/db";
 import type {  RequestHandler } from "@sveltejs/kit";
-export const GET : RequestHandler = async()=>{
+export const POST : RequestHandler = async({request})=>{
     
+
     try {
-         let res  = await sendOracleResult(queri)
+
+         let Query = await request.text()
+
+
+         let res  = await sendOracleResult(Query)
         // await db.authenticate();
         return new Response(
             JSON.stringify(res)
         )
       } catch (error) {
-        console.error('Unable to connect to the database:', error);
         return new Response(
             `Error :` + error
         )
