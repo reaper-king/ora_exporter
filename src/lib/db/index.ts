@@ -1,13 +1,14 @@
 import oracledb from 'oracledb';
 import 'dotenv/config';
 
-const { CONNECTION_STRING , DB_PASS ,DB_USER  , INSTANT_CLIENT } = process.env
+const { CONNECTION_STRING , DB_PASS ,DB_USER  } = process.env
 
 let result
 
 
 try {
-    oracledb.initOracleClient({libDir: INSTANT_CLIENT});
+    // oracledb.initOracleClient({libDir: '/app/client'});
+    oracledb.initOracleClient();
   } catch (err) {
     console.error('Whoops!');
     console.error(err);
